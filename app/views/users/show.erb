@@ -1,0 +1,18 @@
+<h1>Welcome, <a href="/users/<%=@user.username%>"><%=@user.username%></a></h1> <br>
+
+<a href="/bows/new">Create New Bow</a> <br><br><br>
+
+<div class=bow_container>
+    <% Bow.all.each do |bow| %>
+      <a href="/bows/<%=bow.id%>"><%=bow.name%></a> By <%=User.find_by(id: bow.user_id).username%>
+      <br><br>
+    <% end %>
+</div>
+
+
+
+
+
+<form action="/users/logout" method="post">
+    <input type="submit" value="Log Out" >
+</form>

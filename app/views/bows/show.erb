@@ -1,0 +1,46 @@
+<h1>Welcome, <a href="/users/<%=@user.username%>"><%=@user.username%></a></h1> <br>
+
+<a href="/bows/new">Create New Bow</a> <br><br><br>
+
+<div class=bow_container>
+    <strong><%=@bow.name%></strong> by <strong><%=User.find_by(id: @bow.user_id).username%></strong>
+    <br><br>
+    Model: <%=@bow.model%>
+    <br><br>
+    Front Sight: <%=@bow.front_sight%>
+    <br><br>
+    Peep Sight: <%=@bow.peep_sight%>
+    <br><br>
+    Arrow Rest: <%=@bow.arrow_rest%>
+    <br><br>
+    Stabilizer: <%=@bow.stabilizer%>
+    <br><br>
+    Release: <%=@bow.release%>
+    <br><br>
+    Quiver: <%=@bow.quiver%>
+    <br><br>
+    Arrow Shaft: <%=@bow.arrow_shaft%>
+    <br><br>
+    Arrow Head: <%=@bow.arrow_head%>
+    <br><br>
+</div>
+
+<%# any way to do radio buttons with an other button that has a text input field? %>
+
+<form action="/bows/<%=@bow.id%>/edit" method="get">
+    <% if @bow.user_id == @user.id %>
+    <input type="submit" value="Edit Bow">
+    <% end %>
+</form>
+
+<form action="/bows/<%=@bow.id%>/delete" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <% if @bow.user_id == @user.id %>
+    <input type="submit" value="Delete Bow">
+    <% end %>
+</form>
+
+
+<form action="/users/logout" method="post">
+    <input type="submit" value="Log Out" >
+</form>

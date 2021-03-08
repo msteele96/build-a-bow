@@ -1,0 +1,44 @@
+<h1>Welcome, <a href="/users/<%=@user.username%>"><%=@user.username%></a></h1> <br>
+
+<h2>Edit your bow (<%=@bow.name%>) below</h2>
+
+<form action="/bows/<%=@bow.id%>/edit" method="post">
+    <label for="name">Name: </label>
+    <input type="text" name="bow[name]" id="name" value="<%=@bow.name%>">
+    <br><br>
+    <label for="model">Model: </label>
+    <input type="text" name="bow[model]" id="model" value="<%=@bow.model%>">
+    <br><br>
+    <label for="front_sight">Front Sight: </label>
+    <input type="text" name="bow[front_sight]" id="front_sight" value="<%=@bow.front_sight%>">
+    <br><br>
+    <label for="peep_sight">Peep Sight: </label>
+    <input type="text" name="bow[peep_sight]" id="peep_sight" value="<%=@bow.peep_sight%>">
+    <br><br>
+    <label for="arrow_rest">Arrow Rest: </label>
+    <input type="text" name="bow[arrow_rest]" id="arrow_rest" value="<%=@bow.arrow_rest%>">
+    <br><br>
+    <label for="stabilizer">Stabilizer: </label>
+    <input type="text" name="bow[stabilizer]" id="stabilizer" value="<%=@bow.stabilizer%>">
+    <br><br>
+    <label for="release">Release: </label>
+    <input type="text" name="bow[release]" id="release" value="<%=@bow.release%>">
+    <br><br>
+    <label for="quiver">Quiver: </label>
+    <input type="text" name="bow[quiver]" id="quiver" value="<%=@bow.quiver%>">
+    <br><br>
+    <label for="arrow_shaft">Arrow Shaft: </label>
+    <input type="text" name="bow[arrow_shaft]" id="arrow_shaft" value="<%=@bow.arrow_shaft%>">
+    <br><br>
+    <label for="arrow_head">Arrow Head: </label>
+    <input type="text" name="bow[arrow_head]" id="arrow_head" value="<%=@bow.arrow_head%>">
+    <br><br>
+    <input type="hidden" name="_method" value="PATCH">
+    <input type="submit" value="Update Bow">
+</form>
+
+<br><br>
+
+<form action="/users/logout" method="post">
+    <input type="submit" value="Log Out" >
+</form>
