@@ -1,17 +1,25 @@
-<h1>Welcome, <a href="/users/<%=@user.username%>"><%=@user.username%></a></h1> <br>
+<h1>Welcome, <a href="/users/all"><%=@user.username%></a></h1> <br>
 
-<a href="/bows/new">Create New Bow</a> <br><br><br>
+<h2><%=@page.username%>'s Bows</h2> <br>
+
+<% if @user.id == @page.id %>
+    <a href="/bows/new">Create New Bow</a> <br><br><br>
+<% end %>
 
 <div class=bow_container>
     <% Bow.all.each do |bow| %>
-      <a href="/bows/<%=bow.id%>"><%=bow.name%></a> By <%=User.find_by(id: bow.user_id).username%>
+    <% if bow.user_id == @page.id %>
+        <a href="/bows/<%=bow.id%>"><%=bow.name%></a> By <%=User.find_by(id: bow.user_id).username%>
+    <% end %>
       <br><br>
     <% end %>
 </div>
 
-
-
-
+<form action="/users/password" method="get">
+  <% if @user.id == @page.id %>
+    <input type="submit" value="Change Password">
+  <% end %>
+</form>
 
 <form action="/users/logout" method="post">
     <input type="submit" value="Log Out" >

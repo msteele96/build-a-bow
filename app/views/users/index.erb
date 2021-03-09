@@ -1,0 +1,18 @@
+<h1>Welcome, <a href="/users/<%=@user.username%>"><%=@user.username%></a></h1> <br>
+
+<h2>Select a user to view all of their bows</h2>
+
+<div class=users_container>
+    <% User.all.each do |user| %>
+      <a href="/users/<%=user.username%>"><%=user.username%></a>
+      <br><br>
+    <% end %>
+</div>
+
+
+
+
+
+<form action="/users/logout" method="post">
+    <input type="submit" value="Log Out" >
+</form>
