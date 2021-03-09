@@ -36,7 +36,7 @@ class BowsController < ApplicationController
         if logged_in? && current_user.id == @bow.user_id
             @bow.delete
         end
-        redirect "/users/#{current_user.id}"
+        redirect "/users/#{current_user.username}"
     end
 
     get '/bows/:id/edit' do
